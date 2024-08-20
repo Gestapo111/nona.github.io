@@ -469,7 +469,7 @@
 
     function trackModifications() {
         modificationCount++;
-        if (modificationCount >= 3) {
+        if (modificationCount >= 26) {
             document.getElementById('lockModal').style.display = 'block';
             setTimeout(() => {
                 document.body.innerHTML = '';
