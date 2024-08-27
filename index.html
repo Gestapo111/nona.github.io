@@ -105,7 +105,7 @@
             <input type="text" id="studentName" required><br><br>
             <label for="studentNIE">NIE:</label>
             <input type="text" id="studentNIE" required><br><br>
-            <button onclick="startExam()">Iniciar Evaluación</button>
+            <button onclick="validateNIE()">Iniciar Evaluación</button>
         </div>
     </div>
 </div>
@@ -143,6 +143,35 @@
 </div>
 
 <script>
+    const validNIEs = [
+        "20095704", "4839256", "4267830", "4839294", "20116590",
+        "20116596", "20116583", "20116604", "20116618", "4839266",
+        "4267822", "19711632", "10192628", "4267823", "19711285",
+        "20116626", "20116645", "4267833", "19964681", "262583459",
+        "20116650", "20116652", "20116659", "20116664", "20116675",
+        "3850949", "20116579", "20116581", "7301436", "19933297",
+        "20116587", "19964652", "4839276", "6297541", "20116613",
+        "7301427", "19964663", "10192599", "7301676", "19782647",
+        "4839285", "6297508", "20116651", "4839261", "2965474",
+        "43393008", "46842054"
+    ];
+
+    function validateNIE() {
+        const studentName = document.getElementById('studentName').value;
+        const studentNIE = document.getElementById('studentNIE').value;
+        if (!studentName || !studentNIE) {
+            alert("Por favor, complete toda la información.");
+            return;
+        }
+
+        if (!validNIEs.includes(studentNIE)) {
+            alert("NIE no válido. Por favor, ingrese un NIE válido.");
+            return;
+        }
+
+        startExam();
+    }
+
     const questions = [
         {
             question: "¿Cuál de las siguientes afirmaciones describe correctamente un ácido fuerte?",
@@ -408,16 +437,9 @@
     }
 
     function startExam() {
-        const studentName = document.getElementById('studentName').value;
-        const studentNIE = document.getElementById('studentNIE').value;
-        if (!studentName || !studentNIE) {
-            alert("Por favor, complete toda la información.");
-            return;
-        }
-
         document.getElementById('nameModal').style.display = 'none';
-        document.getElementById('resultName').innerText = studentName;
-        document.getElementById('resultNIE').innerText = studentNIE;
+        document.getElementById('resultName').innerText = document.getElementById('studentName').value;
+        document.getElementById('resultNIE').innerText = document.getElementById('studentNIE').value;
 
         shuffleArray(questions);
         questions.forEach((q, index) => {
