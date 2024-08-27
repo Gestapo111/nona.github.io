@@ -120,7 +120,7 @@
 </form>
 
 <div id="timerModal">
-    <span id="timerText">30:00</span>
+    <span id="timerText">90:00</span>
 </div>
 
 <div id="resultModal" class="modal">
@@ -398,7 +398,7 @@
 
     let startTime, endTime;
     let modificationCounts = {};  // Objeto para almacenar el conteo de modificaciones por pregunta
-    const maxModifications = 2;
+    const maxModifications = 5;
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -439,7 +439,7 @@
             modificationCounts[`question${index}`] = 0;
         });
 
-        startTimer(30 * 60); // 30 minutos en segundos
+        startTimer(90 * 60); // 90 minutos en segundos
         startTime = new Date();
         document.getElementById('timerModal').style.display = 'block';
     }
